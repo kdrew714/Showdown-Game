@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem; 
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -39,11 +40,14 @@ public class PlayerMovement : MonoBehaviour
         //flips player based on direction of movement
         //hor.input > 0.01f player moving right - making scale one
         //hor.input < -0.01f player moving left - making scale -1
-        if(horizontalInput > 0.01f){
-            transform.localScale = Vector3.one; 
+        /*if(horizontalInput > 0.01f){
+            //transform.localScale = Vector3.one; 
+            transform.Rotate(0, 180, 0); 
         } else if (horizontalInput < -0.01f){
-            transform.localScale = new Vector3(-1, 1, 1); 
-        }
+            //transform.localScale = new Vector3(-1, 1, 1); 
+                //IMPORTANT: USE THE SCRIPT HERE IF BULLET IS NOT FLIPPING
+            transform.Rotate(0, 180, 0); 
+        }*/
 
         //adding jumping movement
         //checking for space key button pressed
@@ -52,8 +56,14 @@ public class PlayerMovement : MonoBehaviour
             //can use a diff number for speed to tweak jump
             Jump(); 
         }
+        Flip(); 
     }
-
+    
+    private void Flip(){
+        if(Keyboard.current.leftArrowKey.wasPressedThisFrame || Keyboard.current.rightArrowKey.wasPressedThisFrame){
+            transform.Rotate(0,180,0); 
+        }
+    }
     private void Jump(){
         //similar code to left-right, but in y direction
         //can use a diff number for speed to tweak jump
