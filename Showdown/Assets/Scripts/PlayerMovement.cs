@@ -11,12 +11,14 @@ public class PlayerMovement : MonoBehaviour
     //Reference to the player's rigidbody - 2d physics of player
     private Rigidbody2D body; 
     private bool grounded; 
+    private Animator anim; 
 
     //Called every time the script is being loaded
     private void Awake()
     {
         //checks player for rigidbody and animator component from object
         body = GetComponent<Rigidbody2D>(); 
+        anim = GetComponent<Animator>(); 
         grounded = true; 
 
     }
@@ -57,6 +59,9 @@ public class PlayerMovement : MonoBehaviour
             Jump(); 
         }
         Flip(); 
+        anim.SetBool("run", horizontalInput != 0);
+
+        anim.SetBool("grounded", grounded); 
     }
     
     private void Flip(){
@@ -68,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         //similar code to left-right, but in y direction
         //can use a diff number for speed to tweak jump
         body.velocity = new Vector2(body.velocity.x, speed);
+        anim.SetTrigger("jump"); 
         grounded = false; 
     }
 
