@@ -53,11 +53,12 @@ public class PlayerMovement : MonoBehaviour
 
         //adding jumping movement
         //checking for space key button pressed
-        if(Input.GetKey(KeyCode.Space) && grounded){
+        if(Input.GetKey(KeyCode.UpArrow) && grounded){
             //similar code to left-right, but in y direction
             //can use a diff number for speed to tweak jump
             Jump(); 
         }
+
         Flip(); 
         anim.SetBool("run", horizontalInput != 0);
 
@@ -82,5 +83,7 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.tag == "Ground"){
             grounded = true; 
         }
+
+        
     }
 }
