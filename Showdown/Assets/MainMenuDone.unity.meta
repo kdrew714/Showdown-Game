@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Showdown/Assets/MainMenuDone.unity.meta
 guid: 049b3ffbc3dda1748a975d53b44a325d
+=======
+guid: a5c444146944d42ff9d9d757678c8f4d
+>>>>>>> playermechanics:Showdown/Assets/Scenes/SampleScene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
