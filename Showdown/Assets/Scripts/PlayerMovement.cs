@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump(){
         //similar code to left-right, but in y direction
         //can use a diff number for speed to tweak jump
-        body.velocity = new Vector2(body.velocity.x, 7);
+        body.velocity = new Vector2(body.velocity.x, 10);
         anim.SetTrigger("jump"); 
         grounded = false; 
     }
